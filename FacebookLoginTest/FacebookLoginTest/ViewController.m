@@ -10,17 +10,48 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@interface ViewController ()
-
+@interface ViewController () <FBSDKLoginButtonDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *tokenLabel;
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
+    NSLog(@"viewDidLoad");
+    
+    self.loginButton.delegate = self;
+    
+    self.tokenLabel.numberOfLines = 0;
+    [self.tokenLabel sizeToFit];
+}
+
+- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+              error:(NSError *)error
+{
+    FBSDKAccessToken *accessToken = [FBSDKAccessToken currentAccessToken];
+    
+    if (!error) {
+        if (!result.isCancelled) {
+            // success
+            NSLog(@"login %@", accessToken.tokenString);
+            self.tokenLabel.text = accessToken.tokenString;
+        } else {
+            // canceled
+            NSLog(@"login canceled");
+        }
+    } else {
+        // error
+        NSLog(@"login error");
+    }
+    
+}
+
+- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
+{
+    NSLog(@"logout");
+    self.tokenLabel.text = @"";
 }
 
 @end

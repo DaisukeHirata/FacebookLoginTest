@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +15,47 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuL-ej-I0A">
+                                <rect key="frame" x="155" y="288" width="290" height="260"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="2Me-WC-cde"/>
+                                    <constraint firstAttribute="width" constant="290" id="6bc-H2-GTe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="czd-2e-iVe" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="155" y="230" width="290" height="50"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ath-58-PUq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="czd-2e-iVe" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="289" id="15X-Pk-B9p"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="QuL-ej-I0A" secondAttribute="bottom" constant="144" id="AD8-3D-2ks"/>
+                            <constraint firstItem="czd-2e-iVe" firstAttribute="leading" secondItem="QuL-ej-I0A" secondAttribute="leading" id="L42-ok-Osn"/>
+                            <constraint firstItem="czd-2e-iVe" firstAttribute="trailing" secondItem="QuL-ej-I0A" secondAttribute="trailing" id="MrS-QB-ryP"/>
+                            <constraint firstItem="czd-2e-iVe" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="OqF-SZ-PIh"/>
+                            <constraint firstItem="QuL-ej-I0A" firstAttribute="top" secondItem="czd-2e-iVe" secondAttribute="bottom" constant="8" id="j8A-yD-Fan"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="QuL-ej-I0A" secondAttribute="bottom" constant="52" id="v7c-kF-blz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="15X-Pk-B9p"/>
+                                <exclude reference="AD8-3D-2ks"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="czd-2e-iVe" id="KGb-Tq-xDy"/>
+                        <outlet property="tokenLabel" destination="QuL-ej-I0A" id="OYp-ti-Q39"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
