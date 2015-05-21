@@ -22,6 +22,7 @@
     NSLog(@"viewDidLoad");
     
     self.loginButton.delegate = self;
+    self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     
     self.tokenLabel.numberOfLines = 0;
     [self.tokenLabel sizeToFit];
